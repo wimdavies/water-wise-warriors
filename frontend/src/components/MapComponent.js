@@ -6,8 +6,6 @@ import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
-
-
     const MapComponent = () => {
 
         const [bathingwater, setBathingwater] = useState([]);
@@ -24,20 +22,19 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
         useEffect(() => {
             const fetchBathingwater = async () => {
                 try {
-                    const response = await fetch('https://api.example.com/bathingwater'); // Replace with your API URL
+                    const response = await fetch('https://api.example.com/bathingwater'); 
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
                     const data = await response.json();
-                    setBathingwater(data); // Assuming data is an array of bathingwater objects
+                    setBathingwater(data); 
                 } catch (error) {
                     console.error('Error fetching bathingwater:', error);
-                    // Handle error (e.g., show error message)
                 }
             };
     
             fetchBathingwater();
-        }, []); // Empty dependency array means this effect runs only once, on mount
+        }, []); 
     
         return (
             <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
