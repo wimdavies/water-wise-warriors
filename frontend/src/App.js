@@ -9,15 +9,14 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate some async operation
     setTimeout(() => {
-      setIsLoading(false); // Set isLoading to false after data is loaded
-    }, 5000); // Example: Wait for 3 seconds before loading data
+      setIsLoading(false); 
+    }, 7000);
   }, []);
 
   return (
     <div className="App">
-      {isLoading ? <LoadingPage /> : <div>Your main content here</div>}
+      {isLoading ? <LoadingPage /> : <div>Load main page here</div>}
     </div>
   );
 };
