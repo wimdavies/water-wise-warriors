@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import React from 'react';
+import Header from './components/Header/Header';
+import HeroSection from './components/HeroSection/HeroSection';
+import SearchBar from './components/SearchBar/SearchBar';
+import Features from './components/Features/Features';
+import PopularSpots from './components/PopularSpots/PopularSpots';
+import Testimonials from './components/Testimonials/Testimonials';
+import CTA from './components/CTA/CTA';
+import Footer from './components/Footer/Footer';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1 className="text-3xl font-bold underline ">
+      Hello world!
+    </h1>
+      <Header />
+      <HeroSection />
     </div>
   );
-}
+};
 
 export default App;
