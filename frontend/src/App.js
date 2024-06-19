@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import LoadingPage from './components/LoadingPage';
+import LoadingBar from 'react-top-loading-bar';
+
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,7 +12,7 @@ const App = () => {
     // Simulate some async operation
     setTimeout(() => {
       setIsLoading(false); // Set isLoading to false after data is loaded
-    }, 3000); // Example: Wait for 3 seconds before loading data
+    }, 5000); // Example: Wait for 3 seconds before loading data
   }, []);
 
   return (
