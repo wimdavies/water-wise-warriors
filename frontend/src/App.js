@@ -1,25 +1,23 @@
 import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import LoadingPage from './components/LoadingPage';
 
-function App() {
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate some async operation
+    setTimeout(() => {
+      setIsLoading(false); // Set isLoading to false after data is loaded
+    }, 3000); // Example: Wait for 3 seconds before loading data
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isLoading ? <LoadingPage /> : <div>Your main content here</div>}
     </div>
   );
-}
+};
 
 export default App;
