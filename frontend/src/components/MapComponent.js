@@ -5,11 +5,8 @@ import L from 'leaflet';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import BathingSpotMap from './BathingSpotComponent';
 
-
-
-
-const MapComponent = () => {
     // const [markers, setMarkers] = useState([]);
 
     // useEffect(() => {
@@ -25,14 +22,20 @@ const MapComponent = () => {
         
     // }, [])
 
-    useEffect(() => {
-        // Configure Leaflet's default icon options
-        L.Icon.Default.mergeOptions({
-            iconRetinaUrl: markerIcon2x,
-            iconUrl: markerIcon,
-            shadowUrl: markerShadow,
-        });
-    }, []);
+    // useEffect(() => {
+    //     // Configure Leaflet's default icon options
+    //     L.Icon.Default.mergeOptions({
+    //         iconRetinaUrl: markerIcon2x,
+    //         iconUrl: markerIcon,
+    //         shadowUrl: markerShadow,
+    //     });
+    // }, []);
+
+
+const MapComponent = ({ bathingspot }) => {
+    let defaultCentre;
+    bathingspot[0] ? defaultCentre = [Number(bathingspot[0].reclat), Number(bathingspot[0].reclong)] : defaultCentre = [54.97108, -1.61614]
+  
 
     return (
             <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
@@ -41,14 +44,13 @@ const MapComponent = () => {
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker position={[54.9781, -1.6103]}>
-                    <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
+                <Marker>
+                
                 </Marker>
+                
                 </MapContainer>
             </section>
             );
-          }
-          
-          export default MapComponent;
+}
+
+export default MapComponent;
