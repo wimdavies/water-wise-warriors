@@ -3,6 +3,7 @@ import { SpotCard } from '../SpotCard/spotcard';
 import { useState } from 'react';
 import bigSpot1 from '/Users/shoaiblatif/Documents/final-engineering-project/water-wise-warriors/frontend/src/images/bigSpot1.png';
 import { spots } from '../SpotCard/SpotsData';
+import TiltCard from '../tiltcard';
 
 const HeroSection = () => {
   const [bigSpotImg, setBigSpotImg] = useState(bigSpot1);
@@ -40,6 +41,7 @@ const HeroSection = () => {
       </div>
 
       <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-cover bg-center bg-blue-50">
+        
         <img
           src={bigSpotImg}
           alt="Lake Windermere"
@@ -47,6 +49,7 @@ const HeroSection = () => {
           height={500}
           className="object-contain relative z-10 rounded-lg"
         />
+            
         <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 sm:bottom-10 lg:bottom-20 sm:left-auto sm:translate-x-0 flex gap-4 sm:gap-6">
           {spots.map((spot) => (
             <div key={spot}>
