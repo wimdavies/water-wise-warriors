@@ -26,10 +26,8 @@ public class BWQService {
                 .toEntity(String.class);
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             JsonNode jsonRootNode = objectMapper.readTree(response.getBody());
-            JsonNode jsonItemsNode = jsonRootNode.get("result").get("items");
-            String items = jsonItemsNode.toString();
+            String items = jsonRootNode.get("result").get("items").toString();
             List<BathingWaterDTO> bathingWaterDTOS = objectMapper.readValue(items, new TypeReference<List<BathingWaterDTO>>() {});
             return bathingWaterDTOS;
         } catch (JsonProcessingException e) {
