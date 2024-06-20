@@ -10,19 +10,17 @@ import Footer from './components/Footer/Footer';
 import './App.css';
 
 const App = () => {
-  return (
+return (
     <div>
-      <h1 className="text-3xl">
-    </h1>
-
-    <section className="xl:padding-l wide:padding-r padding-b">
-    <HeroSection />
-    <Features /> {/*Added in features as this is where MapComponent will go*/}
-    </section>
-    
+        <section className="xl:padding-l wide:padding-r padding-b">
+        <HeroSection />
+        <section className="padding"></section>
+        <Features /> {/*Added in features as this is where MapComponent will go*/}
+        </section>
+        
     
     </div>
-  );
+    );
 };
 
 export default App;
