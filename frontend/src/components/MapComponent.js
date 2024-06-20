@@ -63,13 +63,13 @@ const MapComponent = () => {
                                 
                         // },
                         // },
-                        eubwidNotation: item.eubwidNotation,
-                        latestRiskPrediction: {
-                            expiresAt: item.latestRiskPrediction.expiresAt._value,
-                            riskLevel: {
-                                name: item.latestRiskPrediction.riskLevel.name._value,
-                            },
-                        }
+                        // eubwidNotation: item.eubwidNotation,
+                        // latestRiskPrediction: {
+                        //     expiresAt: item.latestRiskPrediction.expiresAt._value,
+                        //     riskLevel: {
+                        //         name: item.latestRiskPrediction.riskLevel.name._value,
+                         
+                        
                         
                     }));
                     
