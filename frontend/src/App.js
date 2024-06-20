@@ -17,7 +17,10 @@ const App = () => {
 
     <section className="xl:padding-l wide:padding-r padding-b">
     <HeroSection />
+    <Features /> {/*Added in features as this is where MapComponent will go*/}
     </section>
+    
+    
     </div>
   );
 };
