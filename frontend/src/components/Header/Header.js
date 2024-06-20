@@ -1,14 +1,12 @@
 import React from 'react';
-import Navbar from '../../navbar/navbar';
-import './Header.css'
+import { motion } from "framer-motion"
 
 
 const Header = () => {
   return (
     <header>
-        <div className="container">
-        <div className="logo">Cold Water Swimmers</div>
-        <Navbar />
+        <div>
+        <div></div>
         </div>
     </header>
   );
