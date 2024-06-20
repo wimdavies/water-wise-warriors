@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import MapComponent from './components/MapComponent';
 
+
 function App() {
   
 
@@ -10,7 +11,9 @@ function App() {
       <header>
       </header>
       <main>
+        <div className='MapComponent'>
         <MapComponent />
+        </div>
       </main>
     </div>
   );

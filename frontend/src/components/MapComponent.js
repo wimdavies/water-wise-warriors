@@ -18,7 +18,7 @@ const MapComponent = () => {
                 shadowUrl: markerShadow,
             });
         }, []);
-    
+
         useEffect(() => {
             const fetchBathingwaters = async () => {
                 try {
