@@ -22,7 +22,7 @@ const HeroSection = () => {
         <p className="mt-6 mb-14 text-lg-8 text-slate-gray sm:max-w-sm font-montserrat">
           Discover the Thrill and Benefits of Cold Water Swimming
         </p>
-        <button className="mt-4 px-4 py-2 bg-blue-800 text-white font-semibold rounded-lg shadow-md">Get Started</button>
+        <button className="mt-4 px-4 py-2 bg-sky-400 text-white font-semibold rounded-lg shadow-md">Get Started</button>
         <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-16">
           <div>
             <p className="text-4xl font-bold font-palanquin">400+</p>
