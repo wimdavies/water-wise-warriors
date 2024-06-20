@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const PopularSpots = () => {
   const spots = [
     { name: 'Lake Windermere', description: 'A beautiful lake in the Lake District.' },

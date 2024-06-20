@@ -13,10 +13,11 @@ const App = () => {
   return (
     <div>
       <h1 className="text-3xl">
-      Hello world!
     </h1>
-      <Header />
-      <HeroSection />
+
+    <section className="xl:padding-l wide:padding-r padding-b">
+    <HeroSection />
+    </section>
     </div>
   );
 };

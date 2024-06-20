@@ -1,27 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { SpotCard } from '../SpotCard/spotcard';
+import { useState } from 'react';
+import bigSpot1 from '/Users/shoaiblatif/Documents/final-engineering-project/water-wise-warriors/frontend/src/images/bigSpot1.png';
+import { spots } from '../SpotCard/SpotsData';
 
 const HeroSection = () => {
-      
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
-  };
-  
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1
-    }
-  };
+
+  const [bigSpotImg, setBigSpotImg] = useState(bigSpot1)
   
     return (
       <section
@@ -30,16 +15,16 @@ const HeroSection = () => {
         className="w-full flex xl:flex-row flex-col
         justify-center min-h-screen gap-10 max-container"
       >
-        <motion.div 
+        <div 
           className="relative xl:w-2/5 flex flex-col justify-center items-start
-                        w-full max-xl:padding-x pt-28">
-          <motion.p className="text-xl font-montserrat text-coral-red">Dive Into the Cold</motion.p>
-          <motion.h1 className="mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
+                        w-full max-xl:padding-x pt-28 ml-12">
+          <p className="text-xl font-montserrat text-coral-red">Dive Into the Cold</p>
+          <h1 className="mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
             <span className="xl:bg-white xl:whitespace-nowrap relative z-10 pr-10">The Best Cold</span>
             <br />
             <span className="text-coral-red inline-block mt-3">Water
             </span> Swimming
-          </motion.h1>
+          </h1>
           <p className="font-montserrate text-slate-gray text-lg-8 mt-6 mb-14 sm:max-w-sm">
             Discover 
             the Thrill and 
@@ -65,42 +50,37 @@ const HeroSection = () => {
                 <p className="leading-7 font-montserrat text-slate-gray">community members</p>
               </div>
           </div>
-        </motion.div>
+        </div>
         
   
-        <div className="relative flex-1 flex justify-center items-center xl:min-h-screen
-        max-xl:py-40 bg-primary bg-hero bg-cover bg-center">
-          <img src="frontend/public/Lake-Windermere.jpg"
-            alt="Lake"
-            width={610}
-            height={500}
-            className="object-contain relative z-10"
-          />
+        <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-cover bg-center bg-blue-50">
+        <img
+          src={bigSpotImg}// Ensure you provide the correct path to your image
+          alt="Lake Windermere"
+          width={610}
+          height={500}
+          className="object-contain relative z-10 rounded-lg"
+        
+        />
+      </div>
   
           <div className="flex sm:gap-6 gap-4 absolute
           -bottom-[5%] sm:left[10%] max-sm:px-6">
-            {/* {shoes.map((shoe) => (
-              <div key={shoe}>
-                <ShoeCard 
-                  imgURL={shoe}
-                  changeBigShoeImage={(shoe) => setBigShoeImg(shoe)}
-                  bigShoeImg={bigShoeImg} */}
-                
-              </div>
-            
-          </div>
+            {spots.map((spot) => (
+            <div key={spot}>
+              <SpotCard 
+                imgURL={spot}
+                changeBigSpotImage={(spot) => setBigSpotImg(spot)}
+                bigSpotImg={bigSpotImg}
+              />
+        </div>
+        ))}  
+        </div>
       </section>
     )
   }
   
 
-  // return (
-  //   <section>
-  //     <div>
-  //       <h1 class= 'px-8 max-w-sm mx-auto bg-blue-300 rounded-xl shadow-lg space-y-2 sm:py-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-6 text-white text-center'>Find the Best Cold Water Swimming Spots Across the UK</h1>
-  //     </div>
-  //   </section>
-  // );
 
 
 export default HeroSection;
