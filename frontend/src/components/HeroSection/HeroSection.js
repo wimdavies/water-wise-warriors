@@ -17,7 +17,7 @@ const HeroSection = () => {
       >
         <div 
           className="relative xl:w-2/5 flex flex-col justify-center items-start
-                        w-full max-xl:padding-x pt-28 ml-12">
+                        w-full max-xl:padding-x pt-28 ml-36">
           <p className="text-xl font-montserrat text-coral-red">Dive Into the Cold</p>
           <h1 className="mt-10 font-palanquin text-8xl max-sm:text-[72px] max-sm:leading-[82px] font-bold">
             <span className="xl:bg-white xl:whitespace-nowrap relative z-10 pr-10">The Best Cold</span>
@@ -64,8 +64,8 @@ const HeroSection = () => {
         />
       </div>
   
-          <div className="flex sm:gap-6 gap-4 absolute
-          -bottom-[5%] sm:left[10%] max-sm:px-6">
+          <div className="flex sm:gap-6 gap-4 absolute 
+          -bottom-[-2%] right-[12%] sm:left[20%] max-sm:px-6">
             {spots.map((spot) => (
             <div key={spot}>
               <SpotCard 
