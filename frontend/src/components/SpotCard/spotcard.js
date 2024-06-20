@@ -9,9 +9,9 @@ const SpotCard = ({ imgURL, changeBigSpotImage, bigSpotImg }) => {
     }
 
     return (
-        <div className={`border-2 rounded-xl
+        <div className={`border rounded-xl    
         ${bigSpotImg === imgURL.bigSpot
-            ? 'border-coral-red'
+            ? 'border-sky-400'
             : 'border-transparent'
         } cursor-pointer max-sm:flex-1`}
         onClick={handleClick}
