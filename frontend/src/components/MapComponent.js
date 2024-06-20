@@ -28,23 +28,27 @@ const MapComponent = () => {
                     }
                     const data = await response.json(); //get items out of api
                     const bathingWatersData = data.result.items.map(item => ({
+                    
                         eubwidNotation: item.eubwidNotation,
                         name: item.name._value,
                         samplingPoint: {
                             lat: item.samplingPoint.lat,
                             long: item.samplingPoint.long,
-                        // },
+                        },
                         // latestComplianceAssessment: {
                         //     complianceClassification: {
-                        //         name: item.latestComplianceAssessment.complianceClassification.name._value,
-                        //     },
+                        //         name: {
+                        //             id: item._value
+                        //         } 
+                                
+                        // },
                         // },
                         // latestRiskPrediction: {
                         //     expiresAt: item.latestRiskPrediction.expiresAt._value,
                         //     riskLevel: {
                         //         name: item.latestRiskPrediction.riskLevel.name._value,
                         //     },
-                        },
+                        
                     }));
                     
                     setBathingWatersData(bathingWatersData); 
@@ -58,7 +62,7 @@ const MapComponent = () => {
     
         return (
             <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
-                <MapContainer center={[52.727104, -1.62608]} zoom={6} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
+                <MapContainer center={[52.727104, -1.62608]} zoom={6.5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -70,7 +74,7 @@ const MapComponent = () => {
                                     <h3>{spot.name}</h3>
                                     <p>Latitude: {spot.samplingPoint.lat}</p>
                                     <p>Longitude: {spot.samplingPoint.long}</p>
-                                    {/* <p>Compliance: {spot.compliance}</p>
+                                    <p>Compliance: {spot.compliance}</p> {/*
                                     <p>Risk level: {spot.riskLevel}</p>
                                     <p>Risk Expires At: {new Date(spot.riskExpiresAt).toLocaleDateString()}</p> */}
                                 </div>
