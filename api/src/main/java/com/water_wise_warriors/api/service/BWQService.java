@@ -31,7 +31,6 @@ public class BWQService {
             JsonNode jsonItemsNode = jsonRootNode.get("result").get("items");
             String items = jsonItemsNode.toString();
             List<BathingWaterDTO> bathingWaterDTOS = objectMapper.readValue(items, new TypeReference<List<BathingWaterDTO>>() {});
-            System.out.println(bathingWaterDTOS);
             return bathingWaterDTOS;
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
