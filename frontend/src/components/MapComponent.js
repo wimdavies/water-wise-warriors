@@ -8,7 +8,7 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 const MapComponent = () => {
 
-        const [bathingwaters, setBathingwaters] = useState([]);
+        const [bathingwaters, setBathingWatersData] = useState([]);
 
         useEffect(() => {
             // Configure Leaflet's default icon options for markers
@@ -22,12 +22,32 @@ const MapComponent = () => {
         useEffect(() => {
             const fetchBathingwaters = async () => {
                 try {
-                    const response = await fetch('https://localhost8080/api/bathing-waters'); 
+                    const response = await fetch('http://localhost:8080/api/bathing-waters'); 
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
-                    const data = await response.json();
-                    setBathingwaters(data); 
+                    const data = await response.json(); //get items out of api
+                    const bathingWatersData = data.result.items.map(item => ({
+                        eubwidNotation: item.eubwidNotation,
+                        name: item.name._value,
+                        samplingPoint: {
+                            lat: item.samplingPoint.lat,
+                            long: item.samplingPoint.long,
+                        // },
+                        // latestComplianceAssessment: {
+                        //     complianceClassification: {
+                        //         name: item.latestComplianceAssessment.complianceClassification.name._value,
+                        //     },
+                        // },
+                        // latestRiskPrediction: {
+                        //     expiresAt: item.latestRiskPrediction.expiresAt._value,
+                        //     riskLevel: {
+                        //         name: item.latestRiskPrediction.riskLevel.name._value,
+                        //     },
+                        },
+                    }));
+                    
+                    setBathingWatersData(bathingWatersData); 
                 } catch (error) {
                     console.error('Error fetching bathingwater:', error);
                 }
@@ -44,12 +64,15 @@ const MapComponent = () => {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {bathingwaters.map(spot => (
-                        <Marker key={spot.id} position={[Number(spot.reclat), Number(spot.reclong)]}>
+                        <Marker key={spot.id} position={[Number(spot.samplingPoint.lat), Number(spot.samplingPoint.long)]}>
                             <Popup>
                                 <div>
-                                    <h3>Bathingspot {spot.id}</h3>
-                                    <p>Latitude: {spot.reclat}</p>
-                                    <p>Longitude: {spot.reclong}</p>
+                                    <h3>{spot.name}</h3>
+                                    <p>Latitude: {spot.samplingPoint.lat}</p>
+                                    <p>Longitude: {spot.samplingPoint.long}</p>
+                                    {/* <p>Compliance: {spot.compliance}</p>
+                                    <p>Risk level: {spot.riskLevel}</p>
+                                    <p>Risk Expires At: {new Date(spot.riskExpiresAt).toLocaleDateString()}</p> */}
                                 </div>
                             </Popup>
                         </Marker>
