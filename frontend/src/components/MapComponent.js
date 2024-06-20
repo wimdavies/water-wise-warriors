@@ -5,18 +5,38 @@ import L from 'leaflet';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import customMarkerIcon from '../custom-marker-icon.png';
+
+// import customMarkerIcon2x from './icons/custom-marker-icon-2x.png';
+// import customMarkerShadow from './icons/custom-marker-shadow.png';
+
 
 const MapComponent = () => {
 
         const [bathingwaters, setBathingWatersData] = useState([]);
 
         useEffect(() => {
-            // Configure Leaflet's default icon options for markers
-            L.Icon.Default.mergeOptions({
-                iconRetinaUrl: markerIcon2x,
-                iconUrl: markerIcon,
-                shadowUrl: markerShadow,
+            // Prepare your custom marker icon options
+            const customIcon = L.icon({
+                iconUrl: customMarkerIcon,
+                // iconRetinaUrl: customMarkerIcon2x,
+                // shadowUrl: customMarkerShadow,
+                iconSize: [25, 41], // Size of the icon
+                iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
+                shadowSize: [41, 41], // Size of the shadow
+                shadowAnchor: [12, 41], // Point of the shadow relative to the icon
+                popupAnchor: [1, -34] // Point from which the popup should open relative to the icon
             });
+    
+            // Configure Leaflet's default icon options to use your custom icon
+            L.Marker.prototype.options.icon = customIcon;
+    
+            // Optionally, you can merge additional options for default Leaflet markers
+            // L.Icon.Default.mergeOptions({
+            //     iconRetinaUrl: markerIcon2x,
+            //     iconUrl: markerIcon,
+            //     shadowUrl: markerShadow,
+            // });
         }, []);
 
         useEffect(() => {
@@ -43,11 +63,13 @@ const MapComponent = () => {
                                 
                         // },
                         // },
-                        // latestRiskPrediction: {
-                        //     expiresAt: item.latestRiskPrediction.expiresAt._value,
-                        //     riskLevel: {
-                        //         name: item.latestRiskPrediction.riskLevel.name._value,
-                        //     },
+                        eubwidNotation: item.eubwidNotation,
+                        latestRiskPrediction: {
+                            expiresAt: item.latestRiskPrediction.expiresAt._value,
+                            riskLevel: {
+                                name: item.latestRiskPrediction.riskLevel.name._value,
+                            },
+                        }
                         
                     }));
                     
@@ -72,11 +94,9 @@ const MapComponent = () => {
                             <Popup>
                                 <div>
                                     <h3>{spot.name}</h3>
-                                    <p>Latitude: {spot.samplingPoint.lat}</p>
-                                    <p>Longitude: {spot.samplingPoint.long}</p>
-                                    <p>Compliance: {spot.compliance}</p> {/*
+                                    <p>Compliance: {spot.compliance}</p> 
                                     <p>Risk level: {spot.riskLevel}</p>
-                                    <p>Risk Expires At: {new Date(spot.riskExpiresAt).toLocaleDateString()}</p> */}
+                                    {/*<p>Risk Expires At: {new Date(spot.riskExpiresAt).toLocaleDateString()}</p> */}
                                 </div>
                             </Popup>
                         </Marker>
