@@ -6,12 +6,12 @@ import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
-    const MapComponent = () => {
+const MapComponent = () => {
 
-        const [bathingwater, setBathingwater] = useState([]);
+        const [bathingwaters, setBathingwaters] = useState([]);
 
         useEffect(() => {
-            // Configure Leaflet's default icon options
+            // Configure Leaflet's default icon options for markers
             L.Icon.Default.mergeOptions({
                 iconRetinaUrl: markerIcon2x,
                 iconUrl: markerIcon,
@@ -20,20 +20,20 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
         }, []);
     
         useEffect(() => {
-            const fetchBathingwater = async () => {
+            const fetchBathingwaters = async () => {
                 try {
-                    const response = await fetch('https://api.example.com/bathingwater'); 
+                    const response = await fetch('https://localhost8080/api/bathing-waters'); 
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
                     }
                     const data = await response.json();
-                    setBathingwater(data); 
+                    setBathingwaters(data); 
                 } catch (error) {
                     console.error('Error fetching bathingwater:', error);
                 }
             };
     
-            fetchBathingwater();
+            fetchBathingwaters();
         }, []); 
     
         return (
@@ -43,7 +43,7 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {bathingwater.map(spot => (
+                    {bathingwaters.map(spot => (
                         <Marker key={spot.id} position={[Number(spot.reclat), Number(spot.reclong)]}>
                             <Popup>
                                 <div>
@@ -57,6 +57,6 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
                 </MapContainer>
             </section>
         );
-    }
+}
     
     export default MapComponent;
