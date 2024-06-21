@@ -12,8 +12,7 @@ import customMarkerIcon from '../custom-marker-icon.png';
 
 
 const MapComponent = () => {
-
-        const [bathingwaters, setBathingWatersData] = useState([]);
+        const [bathingWaters, setBathingWatersData] = useState([]);
 
         useEffect(() => {
             // Prepare your custom marker icon options
@@ -30,17 +29,10 @@ const MapComponent = () => {
     
             // Configure Leaflet's default icon options to use your custom icon
             L.Marker.prototype.options.icon = customIcon;
-    
-            // Optionally, you can merge additional options for default Leaflet markers
-            // L.Icon.Default.mergeOptions({
-            //     iconRetinaUrl: markerIcon2x,
-            //     iconUrl: markerIcon,
-            //     shadowUrl: markerShadow,
-            // });
         }, []);
 
         useEffect(() => {
-            const fetchBathingwaters = async () => {
+            const fetchBathingWaters = async () => {
                 try {
                     const response = await fetch('http://localhost:8080/api/bathing-waters'); 
                     if (!response.ok) {
@@ -48,33 +40,13 @@ const MapComponent = () => {
                     }
                     const data = await response.json(); //get items out of api
                     console.log(data);
-
-                    
-                    const mappedData = data.map(item => ({
-                        eubwidNotation: item.eubwidNotation,
-                        latitude: item.lat,
-                        longitutde: item.lon,
-                        latestRiskPredictionLevel: item.latestRiskPredictionLevel,
-                        latestRiskPredictionExpiresAt: item.latestRiskPredictionExpiresAt,
-                        name: item.name,
-                        latestComplianceAssessment: item.latestComplianceAssessment
-                    }));
-                    
-                    // const eubwidNotations = mappedData.map(mappedItem => mappedItem.eubwidNotation);
-                    // const latitudes = mappedData.map(mappedItem => mappedItem.latitude);
-                    // const longitudes = mappedData.map(mappedItem => mappedItem.longitude);
-                    // const riskPredictionLevels = mappedData.map(mappedItem => mappedItem.latestRiskPredictionLevel);
-                    // const riskPredictionExpiresAts = mappedData.map(mappedItem => mappedItem.latestRiskPredictionExpiresAt);
-                    // const names = mappedData.map(mappedItem => mappedItem.name);
-                    // const complianceAssessments = mappedData.map(mappedItem => mappedItem.latestComplianceAssessment);
-                    
                     setBathingWatersData(data); 
                 } catch (error) {
-                    console.error('Error fetching bathingwater:', error);
+                    console.error('Error fetching BathingWaters:', error);
                 }
             };
 
-            fetchBathingwaters();
+            fetchBathingWaters();
 
         }, []); 
     
@@ -85,7 +57,7 @@ const MapComponent = () => {
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {bathingwaters.map((bathingWater) => (
+                    {bathingWaters.map((bathingWater) => (
                     <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
                         <Popup>
                             <div>
@@ -102,4 +74,4 @@ const MapComponent = () => {
         );
 }
     
-    export default MapComponent;
+export default MapComponent;
