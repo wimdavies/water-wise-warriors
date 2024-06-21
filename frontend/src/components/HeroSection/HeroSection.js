@@ -3,6 +3,7 @@ import { SpotCard } from '../SpotCard/spotcard';
 import { useState } from 'react';
 import bigSpot1 from '/Users/shoaiblatif/Documents/final-engineering-project/water-wise-warriors/frontend/src/images/bigSpot1.png';
 import { spots } from '../SpotCard/SpotsData';
+import { motion } from 'framer-motion';
 import TiltCard from '../tiltcard';
 
 const HeroSection = () => {
@@ -13,6 +14,7 @@ const HeroSection = () => {
       id="home"
       className="w-full flex flex-col xl:flex-row justify-center min-h-screen gap-10 max-container"
     >
+      
       <div className="relative w-full xl:w-2/5 flex flex-col justify-center items-start pt-28 px-4 sm:px-8 lg:px-12 xl:px-20">
         <p className="text-xl font-montserrat text-coral-red">Dive Into the Cold</p>
         <h1 className="mt-10 text-8xl max-sm:text-[72px] max-sm:leading-[82px] font-bold font-palanquin">
