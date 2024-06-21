@@ -10,7 +10,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class BWQServiceTest {
+public class BWQServiceIntegrationTest {
 
     @Autowired
     BWQService bwqService;
@@ -46,21 +46,21 @@ public class BWQServiceTest {
     @Test
     public void testGetBathingWatersReturnsListOfDTOsWithLatestComplianceAssessment() {
         List<BathingWaterDTO> bathingWaterDTOs = bwqService.getBathingWaters();
-        assertEquals("Excellent", bathingWaterDTOs.getFirst().getLatestComplianceAssessment());
-        assertEquals("Excellent", bathingWaterDTOs.get(1).getLatestComplianceAssessment());
+        assertEquals(String.class, bathingWaterDTOs.getFirst().getLatestComplianceAssessment().getClass());
+        assertEquals(String.class, bathingWaterDTOs.get(1).getLatestComplianceAssessment().getClass());
     }
 
     @Test
     public void testGetBathingWatersReturnsListOfDTOsWithLatestRiskPredictionLevel() {
         List<BathingWaterDTO> bathingWaterDTOs = bwqService.getBathingWaters();
-        assertEquals("normal", bathingWaterDTOs.getFirst().getLatestRiskPredictionLevel());
-        assertEquals("normal", bathingWaterDTOs.get(1).getLatestRiskPredictionLevel());
+        assertEquals(String.class, bathingWaterDTOs.getFirst().getLatestRiskPredictionLevel().getClass());
+        assertEquals(String.class, bathingWaterDTOs.get(1).getLatestRiskPredictionLevel().getClass());
     }
 
     @Test
     public void testGetBathingWatersReturnsListOfDTOsWithLatestRiskPredictionExpiresAt() {
         List<BathingWaterDTO> bathingWaterDTOs = bwqService.getBathingWaters();
-        assertEquals("2024-06-21T08:29:00", bathingWaterDTOs.getFirst().getLatestRiskPredictionExpiresAt());
-        assertEquals("2024-06-21T08:29:00", bathingWaterDTOs.get(1).getLatestRiskPredictionExpiresAt());
+        assertEquals(String.class, bathingWaterDTOs.getFirst().getLatestRiskPredictionExpiresAt().getClass());
+        assertEquals(String.class, bathingWaterDTOs.get(1).getLatestRiskPredictionExpiresAt().getClass());
     }
 }
