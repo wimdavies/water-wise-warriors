@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import MapComponent from './components/MapComponent';
+import HeroSection from './sections/HeroSection';
 
 
 function App() {
@@ -11,7 +12,9 @@ function App() {
       <header>
       </header>
       <main>
+        
         <div className='MapComponent'>
+        <HeroSection />
         <MapComponent />
         </div>
       </main>
