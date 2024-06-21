@@ -17,3 +17,5 @@ the endpoint `/api/bathing-waters` returns a JSON object, an array/list of all b
   },
   ....]
 ```
+
+to run the React front end, ensure you are in the /frontend directory, and then run the command `npm start`
