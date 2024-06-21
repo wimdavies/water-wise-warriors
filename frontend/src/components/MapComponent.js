@@ -47,37 +47,35 @@ const MapComponent = () => {
                         throw new Error('Network response was not ok');
                     }
                     const data = await response.json(); //get items out of api
-                    const bathingWatersData = data.result.items.map(item => ({
+                    console.log(data);
+
                     
+                    const mappedData = data.map(item => ({
                         eubwidNotation: item.eubwidNotation,
-                        name: item.name._value,
-                        samplingPoint: {
-                            lat: item.samplingPoint.lat,
-                            long: item.samplingPoint.long,
-                        },
-                        latestComplianceAssessment: {
-                                compliance: item.latestComplianceAssessment
-                        },
-                                
-                        // },
-                        // },
-                        // eubwidNotation: item.eubwidNotation,
-                        // latestRiskPrediction: {
-                        //     expiresAt: item.latestRiskPrediction.expiresAt._value,
-                        //     riskLevel: {
-                        //         name: item.latestRiskPrediction.riskLevel.name._value,
-                         
-                        
-                        
+                        latitude: item.lat,
+                        longitutde: item.lon,
+                        latestRiskPredictionLevel: item.latestRiskPredictionLevel,
+                        latestRiskPredictionExpiresAt: item.latestRiskPredictionExpiresAt,
+                        name: item.name,
+                        latestComplianceAssessment: item.latestComplianceAssessment
                     }));
                     
-                    setBathingWatersData(bathingWatersData); 
+                    // const eubwidNotations = mappedData.map(mappedItem => mappedItem.eubwidNotation);
+                    // const latitudes = mappedData.map(mappedItem => mappedItem.latitude);
+                    // const longitudes = mappedData.map(mappedItem => mappedItem.longitude);
+                    // const riskPredictionLevels = mappedData.map(mappedItem => mappedItem.latestRiskPredictionLevel);
+                    // const riskPredictionExpiresAts = mappedData.map(mappedItem => mappedItem.latestRiskPredictionExpiresAt);
+                    // const names = mappedData.map(mappedItem => mappedItem.name);
+                    // const complianceAssessments = mappedData.map(mappedItem => mappedItem.latestComplianceAssessment);
+                    
+                    setBathingWatersData(data); 
                 } catch (error) {
                     console.error('Error fetching bathingwater:', error);
                 }
             };
-    
+
             fetchBathingwaters();
+
         }, []); 
     
         return (
@@ -87,18 +85,18 @@ const MapComponent = () => {
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {bathingwaters.map(spot => (
-                        <Marker key={spot.id} position={[Number(spot.samplingPoint.lat), Number(spot.samplingPoint.long)]}>
-                            <Popup>
-                                <div>
-                                    <h3>{spot.name}</h3>
-                                    <p>Compliance: {spot.compliance}</p> 
-                                    <p>Risk level: {spot.riskLevel}</p>
-                                    {/*<p>Risk Expires At: {new Date(spot.riskExpiresAt).toLocaleDateString()}</p> */}
-                                </div>
-                            </Popup>
-                        </Marker>
-                    ))}
+                    {bathingwaters.map((bathingWater) => (
+                    <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
+                        <Popup>
+                            <div>
+                                <h3>{bathingWater.name}</h3>
+                                <p>Compliance: {bathingWater.latestComplianceAssessment}</p>
+                                <p>Risk level: {bathingWater.latestRiskPredictionLevel}</p>
+                                {/* <p>Risk Expires At: {new Date(bathingWater.latestRiskPredictionExpiresAt).toLocaleDateString()}</p> */}
+                            </div>
+                        </Popup>
+                    </Marker>
+                ))}
                 </MapContainer>
             </section>
         );
