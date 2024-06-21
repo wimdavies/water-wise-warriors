@@ -55,11 +55,9 @@ const MapComponent = () => {
                             lat: item.samplingPoint.lat,
                             long: item.samplingPoint.long,
                         },
-                        // latestComplianceAssessment: {
-                        //     complianceClassification: {
-                        //         name: {
-                        //             id: item._value
-                        //         } 
+                        latestComplianceAssessment: {
+                                compliance: item.latestComplianceAssessment
+                        },
                                 
                         // },
                         // },
