@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import MapComponent from './components/MapComponent';
-import HeroSection from './sections/HeroSection';
 
+import './App.css';
+
+import Home from './components/Home';
+import BathingWater from './components/BathingWater';
+import { Routes, Route, Navigate } from "react-router-dom";
+import Resources from './components/Resources';
 
 function App() {
   
-
   return (
-    <div>
-      <header>
-      </header>
-      <main>
-        
-        <div className='MapComponent'>
-        <HeroSection />
-        <MapComponent />
-        </div>
-      </main>
-    </div>
+    <>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path='/bathingwater/:eubwidNotation' element={<BathingWater/>}/>
+      <Route path='/resources' element={<Resources />}/>
+    </Routes>
+    </>
+
   );
 }
 
