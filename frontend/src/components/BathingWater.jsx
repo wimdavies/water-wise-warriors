@@ -32,9 +32,12 @@ const BathingWater = () =>{
     return (
         <>
         <h1>{bathingWater.name}</h1>
-        <h3>Latest Assessment: {bathingWater.latestComplianceAssessment}</h3>
-        <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel}</p>
-        <p>Risk Prediction Expires at: {bathingWater.latestRiskPredictionExpiresAt}</p>
+        <h3>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</h3>
+        <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
+        {
+            bathingWater.latestRiskPredictionExpiresAt ? <p>Risk Prediction Expires at: {bathingWater.latestRiskPredictionExpiresAt}</p> : null
+        }
+        
         
         <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
                 <MapContainer center={[Number(bathingWater.lat), Number(bathingWater.lon)]} zoom={15} scrollWheelZoom={false} style={{ height: '70%', width: '70%' }}>

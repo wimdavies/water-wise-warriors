@@ -88,8 +88,8 @@ const MapComponent = () => {
                         <Popup>
                             <div>
                                 <h3>{bathingWater.name}</h3>
-                                <p>Compliance: {bathingWater.latestComplianceAssessment}</p>
-                                <p>Risk level: {bathingWater.latestRiskPredictionLevel}</p>
+                                <p>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
+                                <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
                                 <p>
                                 <Link to={`bathingwater/${bathingWater.eubwidNotation}`} state={{bathingWater:bathingWater}}>
                                     Click here for more info and comments
