@@ -1,14 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import { useMap } from 'react-leaflet';
+import 'leaflet.locatecontrol'
 import L from 'leaflet';
-import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
-import markerIcon from 'leaflet/dist/images/marker-icon.png';
-import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import customMarkerIcon from '../custom-marker-icon.png';
+import 'leaflet/dist/leaflet.css';
+import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
 
-// import customMarkerIcon2x from './icons/custom-marker-icon-2x.png';
-// import customMarkerShadow from './icons/custom-marker-shadow.png';
+
+const LocateControl = () => {
+    const map = useMap();
+
+    useEffect(() => {
+        const lc = L.control.locate({
+            position: 'topleft',
+            strings: {
+                title: 'Show me where I am',
+            },
+            keepCurrentZoomLevel: false,
+            initialZoomLevel: 11,
+            locateOptions: {
+                enableHighAccuracy: true,
+            },
+        });
+        lc.addTo(map);
+        return () => {
+            lc.remove();
+        };
+    }, []);
+
+    return null;
+};
 
 
 const MapComponent = () => {
@@ -29,6 +51,7 @@ const MapComponent = () => {
     
             // Configure Leaflet's default icon options to use your custom icon
             L.Marker.prototype.options.icon = customIcon;
+
         }, []);
 
         useEffect(() => {
@@ -47,12 +70,14 @@ const MapComponent = () => {
             };
 
             fetchBathingWaters();
+            
 
         }, []); 
+
     
         return (
             <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
-                <MapContainer center={[52.727104, -1.62608]} zoom={6.5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }}>
+                <MapContainer center={[52.727104, -1.62608]} zoom={6.5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }} id='map'>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -69,6 +94,7 @@ const MapComponent = () => {
                         </Popup>
                     </Marker>
                 ))}
+                <LocateControl/>
                 </MapContainer>
             </section>
         );
