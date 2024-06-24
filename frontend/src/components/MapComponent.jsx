@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -64,6 +65,11 @@ const MapComponent = () => {
                                 <h3>{bathingWater.name}</h3>
                                 <p>Compliance: {bathingWater.latestComplianceAssessment}</p>
                                 <p>Risk level: {bathingWater.latestRiskPredictionLevel}</p>
+                                <p>
+                                <Link to={`bathingwater/${bathingWater.eubwidNotation}`} state={{bathingWater:bathingWater}}>
+                                    Click here for more info and comments
+                                </Link>
+                                </p>
                                 {/* <p>Risk Expires At: {new Date(bathingWater.latestRiskPredictionExpiresAt).toLocaleDateString()}</p> */}
                             </div>
                         </Popup>
