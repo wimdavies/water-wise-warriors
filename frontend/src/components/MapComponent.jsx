@@ -39,6 +39,7 @@ const MapComponent = () => {
     // Classify data by compliance assessment
     const excellentMarkers = bathingWaters.filter(water => water.latestComplianceAssessment === 'Excellent');
     const goodMarkers = bathingWaters.filter(water => water.latestComplianceAssessment === 'Good');
+    const sufficientMarkers = bathingWaters.filter(water => water.latestComplianceAssessment === 'Sufficient');
     const poorMarkers = bathingWaters.filter(water => water.latestComplianceAssessment === 'Poor');
 
     useEffect(() => {
@@ -86,7 +87,7 @@ const MapComponent = () => {
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
                 <LayersControl position="topright">
-                    <LayersControl.Overlay name="All">
+                    <LayersControl.Overlay name="All" checked="true">
                         <LayerGroup>
                             {bathingWaters.map((bathingWater) => (
                                 <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
@@ -133,6 +134,28 @@ const MapComponent = () => {
                     <LayersControl.Overlay name="Good">
                         <LayerGroup>                   
                             {goodMarkers.map((bathingWater) => (
+                                <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
+                                    <Popup>
+                                        <div>
+                                            <h3>{bathingWater.name}</h3>
+                                            <p>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
+                                            <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
+                                            <p>
+                                            <Link to={`bathingwater/${bathingWater.eubwidNotation}`} state={{bathingWater:bathingWater}}>
+                                                Click here for more info and comments
+                                            </Link>
+                                            </p>
+                                            <p>Risk Expires At: {new Date(bathingWater.latestRiskPredictionExpiresAt).toLocaleDateString()}</p>
+                                        </div>
+                                    </Popup>
+                                </Marker>
+                            ))}
+                        </LayerGroup>
+                    </LayersControl.Overlay>  
+
+                    <LayersControl.Overlay name="Sufficient">
+                        <LayerGroup>                   
+                            {sufficientMarkers.map((bathingWater) => (
                                 <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
                                     <Popup>
                                         <div>
