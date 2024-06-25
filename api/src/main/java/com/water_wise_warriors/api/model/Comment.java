@@ -26,9 +26,8 @@ public class Comment {
     @CreationTimestamp
     private Instant createdAt;
 
-    public Comment(String content, String eubwid, String author) {
+    public Comment(String content, String author) {
         this.content = content;
-        this.eubwid = eubwid;
         this.author = author;
     }
 }

@@ -12,25 +12,26 @@ public class CommentTests {
 
     @Test
     public void commentHasContent() {
-        Comment comment = new Comment("This is comment content", "ukc2102-03600", "Laura");
+        Comment comment = new Comment("This is comment content", "Laura");
         assertEquals("This is comment content", comment.getContent());
     }
 
     @Test
-    public void commentHasEubwid() {
-        Comment comment = new Comment("This is comment content", "ukc2102-03600", "Laura");
+    public void commentCanSetEubwid() {
+        Comment comment = new Comment("This is comment content", "Laura");
+        comment.setEubwid("ukc2102-03600");
         assertEquals("ukc2102-03600", comment.getEubwid());
     }
 
     @Test
     public void commentCanHaveAuthor() {
-        Comment comment = new Comment("This is comment content", "ukc2102-03600", "Laura");
+        Comment comment = new Comment("This is comment content", "Laura");
         assertEquals("Laura", comment.getAuthor());
     }
 
     @Test
     public void commentCanHaveNullAuthor() {
-        Comment comment = new Comment("This is comment content", "ukc2102-03600", null);
+        Comment comment = new Comment("This is comment content", null);
         assertNull(comment.getAuthor());
     }
 
