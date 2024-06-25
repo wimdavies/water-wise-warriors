@@ -9,9 +9,12 @@ import Comments from './Comments.jsx';
 const BathingWater = () =>{
     const location = useLocation()
     const {bathingWater}  = location.state
+    const [currentBathingWater, setCurrentBathingWater] = useState(bathingWater)
+    useEffect(()=>{
+        setCurrentBathingWater(bathingWater)
+    }, [bathingWater])
 
-
-    console.log(bathingWater, "<<<< BathingWaters in component")
+    console.log(currentBathingWater, "<<<< BathingWaters in component")
     
     useEffect(() => {
         // Prepare your custom marker icon options
@@ -32,27 +35,27 @@ const BathingWater = () =>{
     
     return (
         <>
-            <h1>{bathingWater.name}</h1>
-            <h3>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</h3>
-            <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
+            <h1>{currentBathingWater.name}</h1>
+            <h3>Latest Compliance Assessment: {currentBathingWater.latestComplianceAssessment ? currentBathingWater.latestComplianceAssessment : "Information not available"}</h3>
+            <p>Risk Prediction Level: {currentBathingWater.latestRiskPredictionLevel ? currentBathingWater.latestRiskPredictionLevel : "Information not available"}</p>
             {
-                bathingWater.latestRiskPredictionExpiresAt ? <p>Risk Prediction Expires at: {bathingWater.latestRiskPredictionExpiresAt}</p> : null
+                currentBathingWater.latestRiskPredictionExpiresAt ? <p>Risk Prediction Expires at: {currentBathingWater.latestRiskPredictionExpiresAt}</p> : null
             }
 
 
             <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
-                <MapContainer center={[Number(bathingWater.lat), Number(bathingWater.lon)]} zoom={15} scrollWheelZoom={false} style={{ height: '70%', width: '70%' }}>
+                <MapContainer center={[Number(currentBathingWater.lat), Number(currentBathingWater.lon)]} zoom={15} scrollWheelZoom={false} style={{ height: '70%', width: '70%' }}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
+                    <Marker key={currentBathingWater.eubwidNotation} position={[Number(currentBathingWater.lat), Number(currentBathingWater.lon)]}>
 
                     </Marker>
 
                 </MapContainer>
             </section>
-            <Comments eubwid = {bathingWater.eubwidNotation}/>
+            <Comments eubwid = {currentBathingWater.eubwidNotation}/>
 
         </>
     )
