@@ -1,0 +1,53 @@
+/* navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 4rem;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  color: #22258F; /* Changed font color */
+}
+
+.logo {
+  font-size: 30px;
+  font-family: 'Zapfino';
+  color: #22258F;
+  padding-top: 40px;
+}
+
+.logo:hover {
+  color: #6495ED; /* Hover color */
+}
+
+/*.logo {
+  font-size: 45px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #22258F;
+  padding-top: 05px;
+}*/
+
+.nav-links {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: inherit; /* Inherit parent color */
+  font-size: 25px;
+  font-family: 'Didcot', serif;
+  transition: color 0.3s;
+}
+
+.nav-link:hover {
+  color: #6495ED; /* Hover color */
+}
