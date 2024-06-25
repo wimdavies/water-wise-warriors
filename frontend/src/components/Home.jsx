@@ -7,10 +7,10 @@ const Home = () =>{
       <header>
       </header>
       <main>
+      <HeroSection />
       
         <div className='MapComponent'>
-        <HeroSection />
-        <MapComponent />
+        
         </div>
       </main>
     </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import MapComponent from '../components/MapComponent';
 
 
 const HeroSection = () => {
@@ -37,6 +38,9 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      <div className="relative w-full xl:w-3/5 h-[75vh]">
+        <MapComponent />
+    </div>
 
       {/* <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-cover bg-center bg-blue-50">
         
