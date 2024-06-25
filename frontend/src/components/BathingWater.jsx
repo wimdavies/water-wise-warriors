@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useLocation } from 'react-router-dom';
 import L from 'leaflet';
 import customMarkerIcon from '../custom-marker-icon.png';
-import Comments from './Comments.jsx';
+import Comments from './CommentsManager.jsx';
 
 
 const BathingWater = () =>{
