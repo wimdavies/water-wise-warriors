@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Comment from './Comment';
 
 const Comments = ({eubwid}) => {
     console.log(eubwid)
@@ -64,9 +65,12 @@ const Comments = ({eubwid}) => {
 
                 ></input>
                 <button type="submit">Submit</button>
-                </form>
-                <p>{feedbackMsg}</p>
-                </>
+            </form>
+            <p>{feedbackMsg}</p>
+            {comments.map((comment)=>{
+                return <Comment comment={comment}/>
+            })}
+        </>
         )
     }
 
