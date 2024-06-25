@@ -26,13 +26,10 @@ public class CommentsController {
 
     @PostMapping("/api/{eubwid}/comments")
     public List<Comment> create(@PathVariable String eubwid, @RequestBody Comment comment) {
-        System.out.println("FIND ME");
-        System.out.println(eubwid);
-        System.out.println(comment.getEubwid());
-  //      if (comment.getEubwid() == eubwid) {
-            System.out.println("I am here");
-            commentRepository.save(comment);
-    //    }
+        System.out.println("I am here");
+        comment.setEubwid(eubwid);
+        commentRepository.save(comment);
+
         return commentRepository.findByEubwidOrderByCreatedAtDesc(eubwid);
     }
 
