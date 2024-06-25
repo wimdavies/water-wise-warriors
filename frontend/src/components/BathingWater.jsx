@@ -9,7 +9,6 @@ const BathingWater = () =>{
     const location = useLocation()
     const {bathingWater}  = location.state
 
-
     console.log(bathingWater, "<<<< BathingWaters in component")
     
     useEffect(() => {
