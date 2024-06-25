@@ -68,7 +68,7 @@ const Comments = ({eubwid}) => {
             </form>
             <p>{feedbackMsg}</p>
             {comments.map((comment)=>{
-                return <Comment comment={comment}/>
+                return <Comment key={comment.id} comment={comment}/>
             })}
         </>
         )
