@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Comment from './Comment';
 
 const Comments = ({eubwid}) => {
     console.log(eubwid)
@@ -24,31 +25,30 @@ const Comments = ({eubwid}) => {
         fetchComments();
         }, [eubwid]);
 
+    const handleSubmit = async (event) =>{
+        try {
+            event.preventDefault()
+            const response = await fetch(`http://localhost:8080/api/${eubwid}/comments`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newComment)
+            })
+            const data = await response.json()
+            setComments(data)
+            setNewComment({content: "", author: ""})
+            setFeedbackMsg("Comment posted!")
+        } catch (error){
+            console.error('Error posting comment:', error);
+            setFeedbackMsg("Couldn't post comment, sorry!")
+        }
+    }
 
     return (
         <>
             <p>Comments Section</p>
-            <form className="comment-form" onSubmit={
-                async (event) =>{
-                    try {
-                        event.preventDefault()
-                        const response = await fetch(`http://localhost:8080/api/${eubwid}/comments`, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(newComment)
-                        })
-                        const data = await response.json()
-                        setComments(data)
-                        setNewComment({content: "", author: ""})
-                        setFeedbackMsg("Comment posted!")
-                    } catch (error){
-                        console.error('Error posting comment:', error);
-                        setFeedbackMsg("Couldn't post comment, sorry!")
-                    }
-                }
-            }>
+            <form className="comment-form" onSubmit={handleSubmit}>
                 <label htmlFor="commentText">Leave a comment:</label>
                 <input
                 id="commentText"
@@ -65,9 +65,12 @@ const Comments = ({eubwid}) => {
 
                 ></input>
                 <button type="submit">Submit</button>
-                </form>
-                <p>{feedbackMsg}</p>
-                </>
+            </form>
+            <p>{feedbackMsg}</p>
+            {comments.map((comment)=>{
+                return <Comment key={comment.id} comment={comment}/>
+            })}
+        </>
         )
     }
 
