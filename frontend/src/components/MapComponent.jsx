@@ -50,10 +50,10 @@ const MapComponent = () => {
             iconUrl: customMarkerIcon,
             // iconRetinaUrl: customMarkerIcon2x,
             // shadowUrl: customMarkerShadow,
-            iconSize: [25, 41], // Size of the icon
-            iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
-            shadowSize: [41, 41], // Size of the shadow
-            shadowAnchor: [12, 41], // Point of the shadow relative to the icon
+            iconSize: [25, 30], // Size of the icon
+            iconAnchor: [12, 30], // Point of the icon which will correspond to marker's location
+            shadowSize: [41, 30], // Size of the shadow
+            shadowAnchor: [12, 30], // Point of the shadow relative to the icon
             popupAnchor: [1, -34] // Point from which the popup should open relative to the icon
         });
 
