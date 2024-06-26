@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useLocation } from 'react-router-dom';
 import L from 'leaflet';
-import customMarkerIcon from '../custom-marker-icon.png';
+import customMarkerIcon from '../assets/custom-marker-icon.png';
 import Comments from './CommentsManager.jsx';
 import formatDate from '../utils/dateFormatter.js'
 

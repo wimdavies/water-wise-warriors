@@ -6,7 +6,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet.locatecontrol'
 import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
 import "leaflet-loading";
-import customMarkerIcon from '../custom-marker-icon.png';
+import customMarkerIcon from '../assets/custom-marker-icon.png';
 import swimmer from '../assets/swimmer.gif'
 
 const LocateControl = () => {
