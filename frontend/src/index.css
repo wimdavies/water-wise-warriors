@@ -1,3 +1,5 @@
+@import "~leaflet-loading/src/Control.Loading.css";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,10 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.leaflet-control-loading:empty {
+  /* Spinner via ajaxload.info, base64-encoded
+  background-image: url(https://media.tenor.com/ikHheAHFUmMAAAAj/synchronized-team-synchronized-swimming.gif);
+  background-repeat: no-repeat; */
 }
