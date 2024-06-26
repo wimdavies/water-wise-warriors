@@ -1,4 +1,5 @@
 import MapComponent from "./MapComponent";
+import HeroSection from "../sections/HeroSection"
 
 const Home = () =>{
     return (
@@ -6,8 +7,10 @@ const Home = () =>{
       <header>
       </header>
       <main>
+      <HeroSection />
+      
         <div className='MapComponent'>
-        <MapComponent />
+        
         </div>
       </main>
     </div>
