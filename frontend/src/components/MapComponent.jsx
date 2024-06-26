@@ -8,6 +8,8 @@ import customMarkerIcon from '../custom-marker-icon.png';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
 
+import swimmer from '../asserts/swimmer.gif'
+
 
 const LocateControl = () => {
     const map = useMap();
@@ -85,7 +87,10 @@ const MapComponent = () => {
     return (
         <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
             {loading ? 
-            <p>loading.....</p>
+            <>
+                <h2>Just fetching some bathing spots..</h2>
+                <img src={swimmer} alt="Loading..." className="loading-gif" />
+            </>
             :
             <MapContainer center={[52.727104, -1.62608]} zoom={6.5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }} id='map'>
                 <TileLayer
