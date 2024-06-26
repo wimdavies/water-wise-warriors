@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import { MapContainer, TileLayer, Marker, Popup, LayersControl, LayerGroup } from 'react-leaflet';
-import { useMap } from 'react-leaflet';
-import 'leaflet.locatecontrol'
+import { MapContainer, useMap, TileLayer, Marker, Popup, LayersControl, LayerGroup } from 'react-leaflet';
 import L from 'leaflet';
-import customMarkerIcon from '../custom-marker-icon.png';
 import 'leaflet/dist/leaflet.css';
+import 'leaflet.locatecontrol'
 import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
-
-import swimmer from '../asserts/swimmer.gif'
-
+import "leaflet-loading";
+import customMarkerIcon from '../custom-marker-icon.png';
+import swimmer from '../assets/swimmer.gif'
 
 const LocateControl = () => {
     const map = useMap();
 
     useEffect(() => {
         const lc = L.control.locate({
-            position: 'topleft',
+            position: 'bottomleft',
             strings: {
                 title: 'Show me where I am',
             },
@@ -83,7 +81,7 @@ const MapComponent = () => {
         fetchBathingWaters();
 
     }, []); 
-
+    
     return (
         <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
             {loading ? 
@@ -92,11 +90,12 @@ const MapComponent = () => {
                 <img src={swimmer} alt="Loading..." className="loading-gif" />
             </>
             :
-            <MapContainer center={[52.727104, -1.62608]} zoom={6.5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }} id='map'>
+            <MapContainer center={[52.727104, -1.62608]} zoom={6.5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }} id='map' loadingControl={true} >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
+                <LocateControl/>
                 <LayersControl position="topright">
                     <LayersControl.Overlay name="Excellent" checked="true">
                         <LayerGroup>                   
@@ -203,7 +202,6 @@ const MapComponent = () => {
                         </LayerGroup>
                     </LayersControl.Overlay>
                 </LayersControl>
-            <LocateControl/>
             </MapContainer>
             }
         </section>
