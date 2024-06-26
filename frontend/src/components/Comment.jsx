@@ -9,7 +9,7 @@ const Comment = ({comment}) => {
         {comment.content}
         </p>
         <p>
-        <strong>{comment.author}</strong> left this comment at <strong>{formattedCommentLeftOnDate}</strong>
+        <strong>{comment.author ? comment.author : "anon"}</strong> left this comment at <strong>{formattedCommentLeftOnDate}</strong>
         </p>
         </div>
     )
