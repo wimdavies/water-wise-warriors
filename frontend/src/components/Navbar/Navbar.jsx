@@ -11,7 +11,9 @@ const Navbar = () => {
   return (
     <nav className='navbar'>
       {/* Logo */}
+      <a href="/">
       <h1 className='logo'>Wild Waters</h1>
+      </a>
 
       {/* Desktop Navigation */}
       <ul className='nav-links'>
