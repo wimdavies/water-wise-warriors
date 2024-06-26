@@ -7,6 +7,7 @@ import 'leaflet.locatecontrol'
 import 'leaflet.locatecontrol/dist/L.Control.Locate.css';
 import "leaflet-loading";
 import customMarkerIcon from '../custom-marker-icon.png';
+import swimmer from '../assets/swimmer.gif'
 
 const LocateControl = () => {
     const map = useMap();
@@ -34,6 +35,7 @@ const LocateControl = () => {
 
 const MapComponent = () => {
     const [bathingWaters, setBathingWatersData] = useState([]);
+    const [loading, setLoading] = useState(true)
 
     // Classify data by compliance assessment
     const excellentMarkers = bathingWaters.filter(water => water.latestComplianceAssessment === 'Excellent');
@@ -68,10 +70,11 @@ const MapComponent = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json(); //get items out of api
-                console.log(data);
-                setBathingWatersData(data); 
+                setBathingWatersData(data)
             } catch (error) {
                 console.error('Error fetching BathingWaters:', error);
+            } finally {
+                setLoading(false)
             }
         };
 
@@ -81,6 +84,12 @@ const MapComponent = () => {
     
     return (
         <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
+            {loading ? 
+            <>
+                <h2>Just fetching some bathing spots..</h2>
+                <img src={swimmer} alt="Loading..." className="loading-gif" />
+            </>
+            :
             <MapContainer center={[52.727104, -1.62608]} zoom={6.5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }} id='map' loadingControl={true} >
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -194,6 +203,7 @@ const MapComponent = () => {
                     </LayersControl.Overlay>
                 </LayersControl>
             </MapContainer>
+            }
         </section>
     );
 }
