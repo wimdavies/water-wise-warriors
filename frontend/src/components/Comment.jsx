@@ -1,15 +1,15 @@
-
+import formatDate from "../utils/dateFormatter";
 
 const Comment = ({comment}) => {
-    const date = new Date(comment.createdAt);
-    const stringdate = date.toString().split(' ').slice(0, 5).join(' ');
+    const formattedCommentLeftOnDate = formatDate(comment.createdAt);
+    
     return (
         <div style={{ border: '1px solid black', padding: '10px' }}> 
         <p>
         {comment.content}
         </p>
         <p>
-        <strong>{comment.author}</strong> left this comment on <strong>{stringdate}</strong>
+        <strong>{comment.author ? comment.author : "anon"}</strong> left this comment at <strong>{formattedCommentLeftOnDate}</strong>
         </p>
         </div>
     )
