@@ -35,6 +35,7 @@ const LocateControl = () => {
 
 const MapComponent = () => {
     const [bathingWaters, setBathingWatersData] = useState([]);
+    const [loading, setLoading] = useState(true)
 
     // Classify data by compliance assessment
     const excellentMarkers = bathingWaters.filter(water => water.latestComplianceAssessment === 'Excellent');
@@ -69,9 +70,11 @@ const MapComponent = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json(); //get items out of api
-                setBathingWatersData(data); 
+                setBathingWatersData(data)
             } catch (error) {
                 console.error('Error fetching BathingWaters:', error);
+            } finally {
+                setLoading(false)
             }
         };
 
@@ -81,6 +84,9 @@ const MapComponent = () => {
 
     return (
         <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
+            {loading ? 
+            <p>loading.....</p>
+            :
             <MapContainer center={[52.727104, -1.62608]} zoom={6.5} scrollWheelZoom={false} style={{ height: '100%', width: '100%' }} id='map'>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -194,6 +200,7 @@ const MapComponent = () => {
                 </LayersControl>
             <LocateControl/>
             </MapContainer>
+            }
         </section>
     );
 }
