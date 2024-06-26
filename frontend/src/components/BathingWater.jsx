@@ -4,17 +4,19 @@ import { useLocation } from 'react-router-dom';
 import L from 'leaflet';
 import customMarkerIcon from '../custom-marker-icon.png';
 import Comments from './CommentsManager.jsx';
+import formatDate from '../utils/dateFormatter.js'
 
 
 const BathingWater = () =>{
     const location = useLocation()
     const {bathingWater}  = location.state
     const [currentBathingWater, setCurrentBathingWater] = useState(bathingWater)
+ 
+    const formattedRiskPredictionExpiryDate = formatDate(currentBathingWater.latestRiskPredictionExpiresAt)
+
     useEffect(()=>{
         setCurrentBathingWater(bathingWater)
     }, [bathingWater])
-
-    console.log(currentBathingWater, "<<<< BathingWaters in component")
     
     useEffect(() => {
         // Prepare your custom marker icon options
@@ -39,7 +41,7 @@ const BathingWater = () =>{
             <h3>Latest Compliance Assessment: {currentBathingWater.latestComplianceAssessment ? currentBathingWater.latestComplianceAssessment : "Information not available"}</h3>
             <p>Risk Prediction Level: {currentBathingWater.latestRiskPredictionLevel ? currentBathingWater.latestRiskPredictionLevel : "Information not available"}</p>
             {
-                currentBathingWater.latestRiskPredictionExpiresAt ? <p>Risk Prediction Expires at: {currentBathingWater.latestRiskPredictionExpiresAt}</p> : null
+                currentBathingWater.latestRiskPredictionExpiresAt ? <p>Risk Prediction Expires at: {formattedRiskPredictionExpiryDate}</p> : null
             }
 
 

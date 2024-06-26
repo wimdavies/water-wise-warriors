@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Comment from './Comment';
 
 const Comments = ({eubwid}) => {
-    console.log(eubwid)
     const [newComment, setNewComment] = useState({content: "", author: ""})
     const [comments, setComments] = useState([])
     const [feedbackMsg, setFeedbackMsg] = useState("")

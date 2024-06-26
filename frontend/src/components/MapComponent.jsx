@@ -69,7 +69,6 @@ const MapComponent = () => {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json(); //get items out of api
-                console.log(data);
                 setBathingWatersData(data); 
             } catch (error) {
                 console.error('Error fetching BathingWaters:', error);
