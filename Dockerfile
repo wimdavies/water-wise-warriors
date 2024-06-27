@@ -1,18 +1,14 @@
-FROM eclipse-temurin:21
+FROM eclipse-temurin:21 AS build
 
 WORKDIR /app
+COPY . .
 
-COPY ./api/mvn/ ./api/mvn
-COPY ./api/mvnw pom.xml ./api/
-RUN ./api/mvnw dependency:go-offline
+WORKDIR /app/api
+RUN ./mvnw clean package -DskipTests
 
-COPY ./api/src ./api/src
-COPY ./frontend ./frontend
-
-CMD ["./api/mvnw", "clean package"]
-
+WORKDIR /app
 FROM eclipse-temurin:21
 EXPOSE 8080
 
-COPY --from=target /api/target/api-1.0.jar app.jar
+COPY --from=build /app/api/target/api-1.0.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
