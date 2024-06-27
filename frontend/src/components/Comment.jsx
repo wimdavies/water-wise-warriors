@@ -4,7 +4,7 @@ const Comment = ({comment}) => {
     const formattedCommentLeftOnDate = formatDate(comment.createdAt);
     
     return (
-        <div style={{ border: '1px solid black', padding: '10px' }}> 
+        <div style={{ border: '1px solid black', padding: '10px', backgroundColor: 'white', marginBottom: '5px' }}> 
         <p>
         {comment.content}
         </p>

@@ -37,15 +37,20 @@ const BathingWater = () =>{
     
     return (
         <>
-            <h1>{currentBathingWater.name}</h1>
-            <h3>Latest Compliance Assessment: {currentBathingWater.latestComplianceAssessment ? currentBathingWater.latestComplianceAssessment : "Information not available"}</h3>
-            <p>Risk Prediction Level: {currentBathingWater.latestRiskPredictionLevel ? currentBathingWater.latestRiskPredictionLevel : "Information not available"}</p>
-            {
-                currentBathingWater.latestRiskPredictionExpiresAt ? <p>Risk Prediction Expires at: {formattedRiskPredictionExpiryDate}</p> : null
-            }
+        <div style={{width: '100vw', display: 'flex',justifyContent: 'center'}}>
+        {/* // <div style={{display: 'flex', width: '50vw'}}> */} 
+            <div style={{padding: '20px', marginTop: '4.5rem',marginLeft: '3rem'}}>
 
+                <h1>{currentBathingWater.name}</h1>
+                <p style={{fontSize: '25px'}}>Current Assessment: {currentBathingWater.latestComplianceAssessment ? currentBathingWater.latestComplianceAssessment : "Information not available"}</p>
+                <p style={{fontSize: '25px'}}>Risk Prediction Level: {currentBathingWater.latestRiskPredictionLevel ? currentBathingWater.latestRiskPredictionLevel : "Information not available"}</p>
+                {
+                    currentBathingWater.latestRiskPredictionExpiresAt ? <p style={{fontSize: '25px'}}>Risk Prediction Expires at: {formattedRiskPredictionExpiryDate}</p> : null
+                }
 
-            <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
+            </div>
+
+            <section style={{ height: '80vh', width: '60%', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0', margin: '0 auto', overflow: 'hidden' }}>
                 <MapContainer center={[Number(currentBathingWater.lat), Number(currentBathingWater.lon)]} zoom={15} scrollWheelZoom={false} style={{ height: '70%', width: '70%' }}>
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -57,6 +62,8 @@ const BathingWater = () =>{
 
                 </MapContainer>
             </section>
+        </div>
+
             <Comments eubwid = {currentBathingWater.eubwidNotation}/>
 
         </>
