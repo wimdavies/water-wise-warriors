@@ -103,7 +103,7 @@ const MapComponent = () => {
                                 <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
                                     <Popup>
                                         <div>
-                                            <h3>{bathingWater.name}</h3>
+                                            <h3 style={{ fontWeight: 'bold' }}>{bathingWater.name}</h3>
                                             <p>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
                                             <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
                                             <p>
@@ -124,7 +124,7 @@ const MapComponent = () => {
                                 <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
                                     <Popup>
                                         <div>
-                                            <h3>{bathingWater.name}</h3>
+                                            <h3 style={{ fontWeight: 'bold' }}>{bathingWater.name}</h3>
                                             <p>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
                                             <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
                                             <p>
@@ -145,7 +145,7 @@ const MapComponent = () => {
                                 <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
                                     <Popup>
                                         <div>
-                                            <h3>{bathingWater.name}</h3>
+                                            <h3 style={{ fontWeight: 'bold' }}>{bathingWater.name}</h3>
                                             <p>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
                                             <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
                                             <p>
@@ -166,7 +166,7 @@ const MapComponent = () => {
                                 <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
                                     <Popup>
                                         <div>
-                                            <h3>{bathingWater.name}</h3>
+                                            <h3 style={{ fontWeight: 'bold' }}>{bathingWater.name}</h3>
                                             <p>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
                                             <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
                                             <p>
@@ -187,7 +187,7 @@ const MapComponent = () => {
                                 <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
                                     <Popup>
                                         <div>
-                                            <h3>{bathingWater.name}</h3>
+                                            <h3 style={{ fontWeight: 'bold' }}>{bathingWater.name}</h3>
                                             <p>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
                                             <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
                                             <p>
