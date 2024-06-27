@@ -22,10 +22,9 @@ const HeroSection = () => {
         <p className="mt-6 mb-14 text-lg-8 text-slate-gray sm:max-w-sm font-montserrat">
           Discover the Thrill and Benefits of Cold Water Swimming
         </p>
-        <button className="mt-4 px-4 py-2 bg-sky-400 text-white font-semibold rounded-lg shadow-md">Get Started</button>
-        <div className="flex justify-start items-start flex-wrap w-full mt-20 gap-16">
+        <div className="flex justify-start items-start flex-wrap w-full mt-17 gap-16">
           <div>
-            <p className="text-4xl font-bold font-palanquin">400+</p>
+            <p className="text-4xl font-bold font-palanquin">300+</p>
             <p className="leading-7 text-slate-gray font-montserrat">coastal spots</p>
           </div>
           <div>
@@ -40,7 +39,7 @@ const HeroSection = () => {
       </div>
       <div className="relative w-full xl:w-3/5 h-[75vh]">
         <MapComponent />
-    </div>
+      </div>
 
       {/* <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-40 bg-primary bg-cover bg-center bg-blue-50">
         

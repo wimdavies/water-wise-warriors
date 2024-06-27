@@ -8,10 +8,10 @@ const Home = () =>{
       </header>
       <main>
       <HeroSection />
-      
-        <div className='MapComponent'>
+
+        {/* <div >
         
-        </div>
+        </div> */}
       </main>
     </div>
     )
