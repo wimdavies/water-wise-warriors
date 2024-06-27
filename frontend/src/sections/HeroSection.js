@@ -9,10 +9,10 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="w-full flex flex-col xl:flex-row justify-center min-h-screen gap-20 max-container mt-[-60px]"
+      className="w-full flex flex-col xl:flex-row justify-center min-h-screen gap-20 max-container mt-[auto]"
     >
       
-      <div className="relative w-full xl:w-2/5 flex flex-col justify-center items-start pt-28 px-4 sm:px-8 lg:px-12 xl:px-20 -mt-40">
+      <div  className="relative w-full xl:w-2/5 flex flex-col justify-center items-start pt-28 px-4 sm:px-8 lg:px-12 xl:px-20 -mt-40">
         {/* <p className="text-xl font-palanquin text-coral-red">Dive Into the Cold</p> */}
         <h1 className="mt-10 text-8xl max-sm:text-[72px] max-sm:leading-[82px] font-bold font-palanquin">
           <span className="relative z-10 pr-10  xl:whitespace-nowrap">The Best Cold</span>

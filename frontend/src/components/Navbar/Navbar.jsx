@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <>
       {/* Logo */}
-      <div style={{display: 'flex', alignItems: 'center', /* Vertically align items */ justifyContent: 'space-between'}}>
+      <div style={{display: 'flex', alignItems: 'center', padding: '0px', /* Vertically align items */ justifyContent: 'space-between'}}>
       <a href="/">
         <h1 style={{fontFamily: 'Zapfino', fontSize: '40px', color: '#22258F', padding: '1.5em', marginTop: '30px'}}>Wild Waters</h1>
       </a>
