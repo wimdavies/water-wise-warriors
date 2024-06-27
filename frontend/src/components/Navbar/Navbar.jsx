@@ -9,21 +9,27 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className='navbar'>
+    <>
       {/* Logo */}
+      <div style={{display: 'flex', alignItems: 'center', /* Vertically align items */ justifyContent: 'space-between'}}>
       <a href="/">
-      <h1 className='logo'>Wild Waters</h1>
+        <h1 style={{fontFamily: 'Zapfino', fontSize: '40px', color: '#22258F', padding: '1.5em', marginTop: '30px'}}>Wild Waters</h1>
       </a>
+      
 
       {/* Desktop Navigation */}
+      <nav className='navbar' >
       <ul className='nav-links'>
         {navItems.map(item => (
           <li key={item.id} className='nav-item'>
-            <a href={item.link} className='nav-link'>{item.text}</a>
+            <a href={item.link} style={{fontSize: '25px'}}>{item.text}</a>
           </li>
+        
         ))}
       </ul>
     </nav>
+    </div>
+    </>
   );
 };
 

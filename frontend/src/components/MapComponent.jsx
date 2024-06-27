@@ -83,7 +83,7 @@ const MapComponent = () => {
     }, []); 
     
     return (
-        <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
+        <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }} >
             {loading ? 
             <>
                 <h2>Just fetching some bathing spots..</h2>
