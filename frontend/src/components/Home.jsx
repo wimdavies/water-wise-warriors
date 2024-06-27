@@ -1,4 +1,3 @@
-import MapComponent from "./MapComponent";
 import HeroSection from "../sections/HeroSection"
 
 const Home = () =>{
