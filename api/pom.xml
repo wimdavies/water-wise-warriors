@@ -113,7 +113,7 @@
 				<executions>
 					<execution>
 						<id>move-react-resources</id>
-						<phase>prepare-package</phase>
+						<phase>generate-resources</phase>
 						<goals>
 							<goal>copy-resources</goal>
 						</goals>
