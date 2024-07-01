@@ -8,10 +8,8 @@ const Comments = ({eubwid}) => {
 
     useEffect(() => {
         const fetchComments = async () => {
-            const apiUri = process.env.REACT_APP_API_URI;
-
             try {
-                const response = await fetch(`${apiUri}/api/${eubwid}/comments`);
+                const response = await fetch(`/api/${eubwid}/comments`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -26,11 +24,9 @@ const Comments = ({eubwid}) => {
         }, [eubwid]);
 
     const handleSubmit = async (event) =>{
-        const apiUri = process.env.REACT_APP_API_URI;
-
         try {
             event.preventDefault()
-            const response = await fetch(`${apiUri}/api/${eubwid}/comments`, {
+            const response = await fetch(`/api/${eubwid}/comments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -53,18 +49,17 @@ const Comments = ({eubwid}) => {
             <form className="comment-form" onSubmit={handleSubmit}>
                 <label htmlFor="commentText">Leave a comment:</label>
                 <input
-                id="commentText"
-                value={newComment.content}
-                onChange={(e) => setNewComment({content: e.target.value, author: newComment.author})}
-                placeholder="It was a lovely swim..."
-                required
+                    id="commentText"
+                    value={newComment.content}
+                    onChange={(e) => setNewComment({content: e.target.value, author: newComment.author})}
+                    placeholder="It was a lovely swim..."
+                    required
                 ></input>
                 <label htmlFor="commentAuthor">Add your name (optional):</label>
                 <input
-                id="commentAuthor"
-                value={newComment.author}
-                onChange={(e) => setNewComment({content: newComment.content, author: e.target.value})}
-
+                    id="commentAuthor"
+                    value={newComment.author}
+                    onChange={(e) => setNewComment({content: newComment.content, author: e.target.value})}
                 ></input>
                 <button type="submit">Submit</button>
             </form>
@@ -73,7 +68,7 @@ const Comments = ({eubwid}) => {
                 return <Comment key={comment.id} comment={comment}/>
             })}
         </>
-        )
-    }
+    )
+}
 
 export default Comments;

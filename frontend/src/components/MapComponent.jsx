@@ -63,11 +63,11 @@ const MapComponent = () => {
     }, []);
 
     useEffect(() => {
-        const apiUri = process.env.REACT_APP_API_URI;
+        // const apiUri = process.env.REACT_APP_API_URI;
 
         const fetchBathingWaters = async () => {
             try {
-                const response = await fetch(`${apiUri}/api/bathing-waters`); 
+                const response = await fetch(`/api/bathing-waters`); 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
