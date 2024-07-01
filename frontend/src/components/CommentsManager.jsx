@@ -5,12 +5,12 @@ const Comments = ({eubwid}) => {
     const [newComment, setNewComment] = useState({content: "", author: ""})
     const [comments, setComments] = useState([])
     const [feedbackMsg, setFeedbackMsg] = useState("")
-
+    const apiUri = process.env.REACT_APP_API_URI;
 
     useEffect(() => {
         const fetchComments = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/api/${eubwid}/comments`);
+                const response = await fetch(`${apiUri}/api/${eubwid}/comments`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -27,7 +27,7 @@ const Comments = ({eubwid}) => {
     const handleSubmit = async (event) =>{
         try {
             event.preventDefault()
-            const response = await fetch(`http://localhost:8080/api/${eubwid}/comments`, {
+            const response = await fetch(`${apiUri}/api/${eubwid}/comments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
