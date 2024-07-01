@@ -14,15 +14,15 @@ import java.io.IOException;
 public class WebConfig  implements WebMvcConfigurer{
 
     // this configuration is still necessary if you want to access the frontend in dev mode,
-    // via localhost:3000
-    // @Override
-    // public void addCorsMappings(CorsRegistry registry) {
-    //     registry.addMapping("/**")
-    //             .allowedOrigins("http://localhost:3000")
-    //             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-    //             .allowedHeaders("*")
-    //             .allowCredentials(true);
-    // }
+    // via localhost:3000, without configuring a proxy
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
+    }
 
     // this configuration allows the packaged app in production, and also in development
     // on localhost:8080, to serve files from the `npm build` output copied into classes/static
