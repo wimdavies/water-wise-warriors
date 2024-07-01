@@ -5,10 +5,11 @@ const Comments = ({eubwid}) => {
     const [newComment, setNewComment] = useState({content: "", author: ""})
     const [comments, setComments] = useState([])
     const [feedbackMsg, setFeedbackMsg] = useState("")
-    const apiUri = process.env.REACT_APP_API_URI;
 
     useEffect(() => {
         const fetchComments = async () => {
+            const apiUri = process.env.REACT_APP_API_URI;
+
             try {
                 const response = await fetch(`${apiUri}/api/${eubwid}/comments`);
                 if (!response.ok) {
@@ -25,6 +26,8 @@ const Comments = ({eubwid}) => {
         }, [eubwid]);
 
     const handleSubmit = async (event) =>{
+        const apiUri = process.env.REACT_APP_API_URI;
+
         try {
             event.preventDefault()
             const response = await fetch(`${apiUri}/api/${eubwid}/comments`, {
