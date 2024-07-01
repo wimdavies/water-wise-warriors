@@ -65,7 +65,7 @@ const MapComponent = () => {
     useEffect(() => {
         const fetchBathingWaters = async () => {
             try {
-                const response = await fetch('http://localhost:8080/api/bathing-waters'); 
+                const response = await fetch('api/bathing-waters'); 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
