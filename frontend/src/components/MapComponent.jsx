@@ -85,10 +85,9 @@ const MapComponent = () => {
     }, []); 
     
     return (
-        <section style={{ height: '80vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }}>
+        <section style={{ height: '70vh', width: '80%', display: 'flex', justifyContent: 'center', alignItems: 'center', margin: '0 auto' }} >
             {loading ? 
             <>
-                <h2>Just fetching some bathing spots..</h2>
                 <img src={swimmer} alt="Loading..." className="loading-gif" />
             </>
             :
@@ -105,8 +104,8 @@ const MapComponent = () => {
                                 <Marker key={bathingWater.eubwidNotation} position={[Number(bathingWater.lat), Number(bathingWater.lon)]}>
                                     <Popup>
                                         <div>
-                                            <h3 style={{ fontWeight: 'bold' }}>{bathingWater.name}</h3>
-                                            <p>Latest Compliance Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
+                                            <h3 style={{ fontWeight: 'bold', color: '#22258F' }}>{bathingWater.name}</h3>
+                                            <p>Current Assessment: {bathingWater.latestComplianceAssessment ? bathingWater.latestComplianceAssessment : "Information not available"}</p>
                                             <p>Risk Prediction Level: {bathingWater.latestRiskPredictionLevel ? bathingWater.latestRiskPredictionLevel : "Information not available"}</p>
                                             <p>
                                             <Link to={`bathingwater/${bathingWater.eubwidNotation}`} state={{bathingWater:bathingWater}}>

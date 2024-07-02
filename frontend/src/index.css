@@ -11,9 +11,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: aliceblue;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #22258F;
+}
+h3 {
+  font-size: 30px;
+  color: #22258F;
+}
+p, label {
+  font-size: 18px;
 }
