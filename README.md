@@ -1,6 +1,10 @@
-# water-wise-warriors
+# Wild Waters
+
 Makers x Deloitte Final Engineering Project
 
+## How to run the project
+
+Install dependencies by running `npm install` in the `/frontend` directory
 
 to run the backend server, ensure you are in the /api directory, and then run the command `mvn spring-boot:run`
 
