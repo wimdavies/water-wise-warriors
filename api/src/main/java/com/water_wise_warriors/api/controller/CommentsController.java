@@ -3,6 +3,7 @@ package com.water_wise_warriors.api.controller;
 import com.water_wise_warriors.api.model.Comment;
 import com.water_wise_warriors.api.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class CommentsController {
     }
 
     @PostMapping("/api/{eubwid}/comments")
+    @ResponseStatus(HttpStatus.CREATED)
     public List<Comment> create(@PathVariable String eubwid, @RequestBody Comment comment) {
         comment.setEubwid(eubwid);
         commentRepository.save(comment);
