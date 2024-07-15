@@ -11,7 +11,7 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 import java.io.IOException;
 
 @Configuration
-public class WebConfig  implements WebMvcConfigurer{
+public class WebConfig implements WebMvcConfigurer {
 
     // this configuration is still necessary if you want to access the frontend in dev mode,
     // via localhost:3000, without configuring a proxy
